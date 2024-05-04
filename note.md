@@ -21,3 +21,11 @@ berisi angka 3306, yakni port default bawaan MySQL.
  DB_USERNAME dan DB_PASSWORD: Dipakai untuk membuat nama user dan
 password login ke database server. Secara bawaan nama user adalah root, dan
 password tidak diisi.
+
+2. . Pengertian Migration
+migration ini digunakan untuk mengerate tabel yang kita buat dan nanti nya kita tidak perlu melakukan nya manual karna sudah kita buat struktur tabel nya seperti apa yang kita inginkan atau hasil dari desain data kita. dan perlu di ketahui laravel itu sudah mempunyai file data bawaan nya sendiri. nah perlu di ingat setiap 1 file migration itu memilki 1 tabel saja. jadi nya jika kita memiliki banyak tabel berarti banyak pula migration yang kita punya.
+
+
+perintah untuk melakukan migration adalah
+php artisan migrate. 
+kenapa sih ini perlu dilakukan? dikarenakan kita akan mengisi tabel yang ada di database yang sudah kita buat di mysql
