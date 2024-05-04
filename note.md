@@ -74,3 +74,18 @@ nah perlu di inget nama file tabel nya tidak boleh sama ya.
 
      3. migration fresh
      migration ini adalah gabungan dari php artisan migrate dan artisan migrate:reset dia akan memperbarui semua nya kembali. 
+
+nah sekarang kita coba isi 
+tabel migration yang sudah kita buat tadi
+
+$table->string('nama');
+$table->string('tempat_lahir');
+$table->date('tanggal_lahir');
+$table->string('fakultas');
+$table->string('jurusan');
+$table->decimal('ipk',3,2);
+
+table yang kita buat ini dar nama sampai jurusan kita membuat tipe data nya string / varchar
+dan tgl lahir bertipe tanggal dan ipk bertipe decimal
+
+selanjut nya kita melakukan migartion. eit perlu di ingat karna sebelum nya kita sudah melakukan migration nah sekarang biar sukses kita menggunakan migrate reset , rollback, ataupun refresh/fresh 
