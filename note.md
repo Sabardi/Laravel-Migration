@@ -89,3 +89,36 @@ table yang kita buat ini dar nama sampai jurusan kita membuat tipe data nya stri
 dan tgl lahir bertipe tanggal dan ipk bertipe decimal
 
 selanjut nya kita melakukan migartion. eit perlu di ingat karna sebelum nya kita sudah melakukan migration nah sekarang biar sukses kita menggunakan migrate reset , rollback, ataupun refresh/fresh 
+
+4. migration alter table 
+migration ini di gunakan jika ingin melakukan edit table ataupub penambahan
+nah disini kita membutuhkan sebuah library 
+bernama Doctrine DBAL nama nya ngeri juga ya........
+perintah untuk memasang nya composer require doctrine/dbal
+
+setelah sukses kita membuat file untuk al
+ter table yang ingin kita ubah atau tambahkan dengan perintah  php artisan make:migration alter_mahasiswas_table --table=mahasiswas
+
+nah setelah sukses kita bisa melihat di file up and down
+
+Di dalam method up() saya membuat 3 buah perintah modifikasi:
+ Method $table->renameColumn('nama','nama_lengkap') dipakai untuk mengubah
+nama kolom 'nama' menjadi 'nama_lengkap'.
+ Method $table->text('alamat')->after('tanggal_lahir') dipakai untuk menambah
+kolom 'alamat' dengan tipe data TEXT, yang posisinya ditempatkan setelah kolom
+'tanggal_lahir'.
+ Method $table->dropColumn('ipk') dipakai untuk menghapus kolom 'ipk'.
+Ketiga perubahan di method up() ini harus kita balik di method down():
+ Method $table->renameColumn('nama_lengkap','nama') dipakai untuk mengubah
+kembali nama kolom dari 'nama_lengkap' menjadi 'nama'.
+335
+Migration
+ Method $table->dropColumn('alamat') dipakai untuk menghapus kolom 'alamat'.
+ Method $table->decimal('ipk',3,2)->default(1.00) dipakai untuk membuat kembali
+kolom 'ipk' dengan tipe data DECIMAL(3,2) dan nilai default 1.00.
+Kode program di dalam method up() dan down() harus berpasangan agar proses rollback bisa
+berlangsung dengan baik.
+
+dan selanjut nya kita melakukan migrate
+php artisan migrate dan tara sukses
+note nya harus di tentukaan ya dan di down nya harus di bali.
