@@ -29,3 +29,48 @@ migration ini digunakan untuk mengerate tabel yang kita buat dan nanti nya kita 
 perintah untuk melakukan migration adalah
 php artisan migrate. 
 kenapa sih ini perlu dilakukan? dikarenakan kita akan mengisi tabel yang ada di database yang sudah kita buat di mysql
+
+3. Membuat Migration
+sebelum nya kita sudah tau tujuan dari migration ini apa dan sekarang bagaimana sih caranya membuat migration ini dan perintah nya apa hehe.
+
+    1. php artisan make:migration <nama_migration> --create=<nama_tabel>
+    contoh nya : php artisan make:migration create_mahasiswas_table --create=mahasiswas
+    atau bisa hanya mengetikan seperti ini
+    hp artisan make:migration create_mahasiswas_table 
+
+    nanti nya akan di buatkan nama file nya sama namun yang membedakan hanya tanggal dan waktu pembuatan nya. dikarenakan time nya berbeda dan perlu di ingat di tambahkan s di belakang kata nya 
+Tambahan flag --create=mahasiswas boleh saja tidak ditulis dan Laravel akan membuat
+tabel berdasarkan nama file. Misal jika dijalankan php artisan make:migration create_
+dosens_table, maka Laravel akan men-generate nama tabel dosens.
+Penamaan tabel dengan akhiran 's' ini sudah kita bahas sebelumnya, yakni untuk
+mengikuti aturan Laravel dimana nama tabel sebaiknya dibuat plural.
+Ini bukan kewajiban karena Laravel tetap mengizinkan kita membuat nama tabel dengan
+kata biasa, namun nanti perlu sedikit konfigurasi jika ingin menggunakan fitur Eloquent.
+Agar lebih mudah dan terbiasa dengan penamaan umum di aplikasi Laravel, saya akan
+buat semua nama tabel dengan akhiran 's', seperti mahasiswas, gurus, barangs, dst.
+Alternatif lain yang juga banyak di pilih programmer indonesia adalah memakai kata
+bahasa inggris seperti students, teachers, items, dst.
+
+
+nah setelah membuat 
+isi tabel nya kita langsung melakukan migration ke database nya langsung dengan printah php artisan migrate
+nah perlu di inget nama file tabel nya tidak boleh sama ya.
+ 
+
+ ada beberapa printah migration yang perlu kita ketahui 
+     1. Migration Rollback
+     melakukan migration seperti sebelum nya dikarenakan ada kesalahan atau penambahan dalam membuat tabel kita bisa melakukan perintah seperti ini
+     php artisan migrate:rollback
+
+     nah terkadang kita ingin mengembalikan satu tabel saja kita bisa menggunakan php artisan migrate:rollback --step=1
+     sebelum melakukan ini liat dulu nih step yg berapa kita ingin  rollback
+    dengan printah  php artisan migrate:status. nanti nya akan muncul status nya yg ke berapa tinggal kita pilih saja mana yang ingin kita rollback
+
+
+
+     2. migration reset
+     ini digunakan jika kita tidak sengaja melakukn drop table atau hapus tabel yang ada di database printah nya
+     php artisan migrate:reset
+
+     3. migration fresh
+     migration ini adalah gabungan dari php artisan migrate dan artisan migrate:reset dia akan memperbarui semua nya kembali. 
